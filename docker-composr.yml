@@ -4,23 +4,22 @@ services:
     build:
       context: ./Docker-db
     image: ssgaikwad/pratice-db
-    container_name: db-container
+    volumes:
+      - vprodbdata:/var/lib/mysql
     ports:
       - "3306:3306"
-    volumes:
-      - vprodb:/var/lib/mysql
+    container_name: vprodb
     environment:
       - MYSQL_ROOT_PASSWORD=vprodbpass
-      
     
   vprocache01:
-    image: memcached:latest
-    container_name: memchache
-    ports:
+    image: memcached
+    ports: 
       - "11211:11211"
+    container_name: memcached
 
   vpromq01:
-    image: rabbitmq:latest
+    image: rabbitmq
     container_name: rabbitmq
     ports:
       - "15672:15672"
@@ -31,26 +30,21 @@ services:
   vproweb:
     build:
       context: ./Docker-web
-    image: ssgaikwad/pratice-web
-    container_name: web-container
     ports:
-      - 80:80
-    
-    
+      - "80:80"
+    container_name: vproweb
+    image: ssgaikwad/pratice-web
+  
   vproapp:
-    build:
+    build: 
       context: ./Docker-app
-    image: ssgaikwad/pratice-app
-    container_name: app-conatiner
     ports:
       - "8080:8080"
-    volumes:
-      - vproapp:/usr/local/tomcat/webapps
-    
+    container_name: vproapp
+    image: ssgaikwad/pratice-app
+    volumes::
+      - vproappdata/usr/local/tomcat/webapps
 
 volumes:
-  vprodb: {}
-  vproapp: {}
-    
-    
-  
+  vproappdata: {}
+  vprodbdata: {}
