@@ -1,7 +1,8 @@
 version: '3.8'
 services:
-  db:
-    image: ./Docker-app
+  vprodb:
+    build:
+      context: ./Docker-db
     container_name: db-container
     ports:
       - "3306:3306"
@@ -11,15 +12,15 @@ services:
       - MYSQL_ROOT_PASSWORD= vprodbpass
       
     
-  memchache:
+  vprocache01:
     image: memcached:latest
-    container_name: vprocache01
+    container_name: memchache
     ports:
       - "11211:11211"
 
-  rabbitmq:
+  vpromq01:
     image: rabbitmq:latest
-    container_name: vpromq01
+    container_name: rabbitmq
     ports:
       - "15672"
     environment:
@@ -27,13 +28,15 @@ services:
       - RABBITMQ_DEFAULT_PASS=guest
 
   web:
-    image: ./Docker-web
+    build:
+      context: ./Docker-web
     container_name: web-container
     ports:
       - 80:80
     
   app:
-    image: ./Docker-app
+    build:
+      context: ./Docker-app
     container_name: app-conatiner
     ports:
       - "8080:8080"
