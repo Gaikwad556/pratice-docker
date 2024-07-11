@@ -28,7 +28,7 @@ services:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
 
-  web:
+  vproweb:
     build:
       context: ./Docker-web
     image: ssgaikwad/pratice-web
@@ -37,7 +37,7 @@ services:
       - 80:80
     
     
-  app:
+  vproapp:
     build:
       context: ./Docker-app
     image: ssgaikwad/pratice-app
