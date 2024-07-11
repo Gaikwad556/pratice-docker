@@ -31,20 +31,22 @@ services:
   web:
     build:
       context: ./Docker-web
+    image: ssgaikwad/pratice-web
     container_name: web-container
     ports:
       - 80:80
-    image: ssgaikwad/pratice-web
+    
     
   app:
     build:
       context: ./Docker-app
+    image: ssgaikwad/pratice-app
     container_name: app-conatiner
     ports:
       - "8080:8080"
     volumes:
       - vproapp:/usr/local/tomcat/webapps
-    image: ssgaikwad/pratice-app
+    
 
 volumes:
   vprodb: {}
