@@ -2,7 +2,7 @@ version: '3.8'
 services:
   db:
     image: ./Docker-app
-    container-name: db-container
+    container_name: db-container
     ports:
       - "3306:3306"
     volumes:
@@ -13,13 +13,13 @@ services:
     
   memchache:
     image: memcached:latest
-    container-name: vprocache01
+    container_name: vprocache01
     ports:
       - "11211:11211"
 
   rabbitmq:
     image: rabbitmq:latest
-    container-name: vpromq01
+    container_name: vpromq01
     ports:
       - "15672"
     environment:
@@ -28,13 +28,13 @@ services:
 
   web:
     image: ./Docker-web
-    container-name: web-container
+    container_name: web-container
     ports:
       - 80:80
     
   app:
     image: ./Docker-app
-    container-name: app-conatiner
+    container_name: app-conatiner
     ports:
       - "8080:8080"
     volumes:
