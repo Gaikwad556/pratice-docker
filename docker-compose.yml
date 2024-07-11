@@ -42,7 +42,7 @@ services:
       - "8080:8080"
     container_name: vproapp
     image: ssgaikwad/pratice-app
-    volumes::
+    volumes:
       - vproappdata/usr/local/tomcat/webapps
 
 volumes:
