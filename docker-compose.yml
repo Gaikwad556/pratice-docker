@@ -43,7 +43,7 @@ services:
     container_name: vproapp
     image: ssgaikwad/pratice-app
     volumes:
-      - vproappdata/usr/local/tomcat/webapps
+      - vproappdata:/usr/local/tomcat/webapps
 
 volumes:
   vproappdata: {}
