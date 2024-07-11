@@ -10,7 +10,7 @@ services:
     volumes:
       - vprodb:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD= vprodbpass
+      - MYSQL_ROOT_PASSWORD=vprodbpass
       
     
   vprocache01:
